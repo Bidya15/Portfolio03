@@ -1,0 +1,479 @@
+.experience-section {
+    position: relative;
+    padding: 6rem 0;
+    background: var(--bg-section);
+    /* Deep space black */
+    overflow: hidden;
+}
+
+/* Galaxy Background Elements */
+.galaxy-canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.star-field {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--particle-color);
+    border-radius: 50%;
+    opacity: 0.3;
+    box-shadow: 0 0 5px var(--particle-color);
+}
+
+.nebula-cloud {
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    filter: blur(140px);
+    opacity: 0.12;
+    mix-blend-mode: var(--blend-mode);
+}
+
+/* Stellar Wind & Flow */
+.stellar-wind-wrap {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.wind-layer {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: -25%;
+    left: -25%;
+    filter: blur(120px);
+    mix-blend-mode: color-dodge;
+}
+
+.nebula-vortex {
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    filter: blur(150px);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.nebula-vortex.primary {
+    top: -10%;
+    right: -10%;
+}
+
+.nebula-vortex.secondary {
+    bottom: -10%;
+    left: -10%;
+}
+
+/* Shooting Stars & Comets */
+.shooting-stars-wrap,
+.comet-trails-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.comet-body {
+    position: absolute;
+    display: flex;
+    align-items: center;
+}
+
+.comet-head {
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #fff, 0 0 30px var(--accent-3);
+}
+
+.comet-tail {
+    width: 300px;
+    height: 2px;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), var(--accent-3));
+    opacity: 0.3;
+    filter: blur(2px);
+    margin-left: -5px;
+}
+
+.shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px var(--accent-1);
+}
+
+.shooting-star::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8));
+    transform: translateY(-50%) rotate(-45deg);
+    transform-origin: right center;
+}
+
+/* Quantum Threads */
+.quantum-threads-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+}
+
+/* Cosmic Timeline Spine */
+.timeline-path-cosmic {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: var(--glass-border);
+}
+
+.stardust-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to bottom, transparent, var(--accent-1), var(--accent-3), transparent);
+    box-shadow: 0 0 20px var(--accent-1);
+}
+
+/* Orbital Pulsar Nodes */
+.orbital-node {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3rem;
+    height: 3rem;
+    z-index: 10;
+}
+
+.pulsar-core {
+    position: absolute;
+    inset: 0.75rem;
+    background: var(--particle-color);
+    border-radius: 50%;
+    box-shadow: 0 0 20px currentColor;
+
+    [data-theme='light'] & {
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.orbital-ring {
+    position: absolute;
+    inset: 0;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: rotateRing 4s linear infinite;
+}
+
+.orbital-ring:nth-child(2) {
+    animation-duration: 6s;
+    animation-direction: reverse;
+    opacity: 0.2;
+}
+
+@keyframes rotateRing {
+    from {
+        transform: perspective(100px) rotateX(60deg) rotateZ(0deg);
+    }
+
+    to {
+        transform: perspective(100px) rotateX(60deg) rotateZ(360deg);
+    }
+}
+
+/* Nebula-Glass Cards */
+.experience-item-cosmic {
+    position: relative;
+    width: 45%;
+    z-index: 5;
+}
+
+.experience-item-cosmic.left {
+    margin-right: auto;
+}
+
+.experience-item-cosmic.right {
+    margin-left: auto;
+}
+
+.experience-card-cosmic {
+    position: relative;
+    padding: 2rem;
+    background: var(--glass);
+    backdrop-filter: blur(40px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 2.5rem;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
+}
+
+/* Edge Highlight Rendering */
+.experience-card-cosmic::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent 40%, transparent 60%, rgba(255, 255, 255, 0.05));
+
+    [data-theme='light'] & {
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.1), transparent 40%, transparent 60%, rgba(15, 23, 42, 0.05));
+    }
+
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.experience-card-cosmic:hover {
+    transform: translateY(-15px) rotateX(5deg);
+    border-color: var(--accent-1);
+    box-shadow:
+        0 40px 80px rgba(0, 0, 0, 0.3),
+        0 0 30px var(--accent-glow);
+
+    [data-theme='light'] & {
+        box-shadow:
+            0 20px 40px rgba(15, 23, 42, 0.1),
+            0 0 20px var(--accent-glow);
+    }
+}
+
+/* Internal 3D Stack */
+.exp-title-stellar {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+    color: var(--text-primary);
+    transform: translateZ(40px);
+
+    [data-theme='dark'] & {
+        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.exp-company-stellar {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--accent-1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    transform: translateZ(30px);
+}
+
+.exp-desc-stellar {
+    transform: translateZ(20px);
+}
+
+.exp-planet-badge {
+    transform: translateZ(50px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.2rem;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Logo Container */
+.exp-logo-container {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(60px);
+    transition: all 0.5s var(--transition-smooth);
+    background: color-mix(in srgb, var(--exp-color) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--exp-color) 30%, transparent);
+
+    [data-theme='light'] & {
+        background: color-mix(in srgb, var(--exp-color) 15%, #ffffff);
+        border: 1px solid color-mix(in srgb, var(--exp-color) 40%, transparent);
+        box-shadow: 0 5px 15px color-mix(in srgb, var(--exp-color) 20%, transparent);
+    }
+}
+
+.exp-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+    transition: all 0.5s ease;
+
+    [data-theme='light'] & {
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    }
+}
+
+.experience-card-cosmic:hover .exp-logo-img {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 12px currentColor);
+}
+
+.exp-logo-glow {
+    position: absolute;
+    inset: 0;
+    filter: blur(20px);
+    z-index: 0;
+}
+
+.experience-card-cosmic:hover .exp-logo-container {
+    transform: translateZ(80px) scale(1.1) rotate(-5deg);
+    border-color: currentColor;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.exp-footer-stellar {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    opacity: 0.6;
+    font-size: 0.85rem;
+    transform: translateZ(10px);
+}
+
+.footer-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.3s ease;
+}
+
+.experience-card-cosmic:hover .footer-item {
+    opacity: 1;
+}
+
+.exp-desc-stellar {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.stellar-bullet {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.stellar-bullet::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 8px;
+    height: 2px;
+    background: currentColor;
+    box-shadow: 0 0 10px currentColor;
+}
+
+@media (max-width: 992px) {
+    .experience-section {
+        padding: 6rem 0;
+    }
+
+    .timeline-path-cosmic {
+        left: 1.5rem;
+    }
+
+    .orbital-node {
+        left: 1.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .experience-item-cosmic {
+        width: calc(100% - 3rem) !important;
+        margin-left: 3rem !important;
+        margin-right: 0 !important;
+    }
+
+    .experience-card-cosmic {
+        padding: 1.8rem 1.5rem;
+        border-radius: 2rem;
+    }
+
+    .exp-planet-badge {
+        position: relative;
+        top: 0;
+        right: 0;
+        width: fit-content;
+        margin-bottom: 1.5rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.6rem;
+    }
+
+    .exp-title-stellar {
+        font-size: 1.3rem;
+        line-height: 1.2;
+    }
+
+    .exp-company-stellar {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .experience-section {
+        padding: 4rem 0;
+    }
+
+    .experience-item-cosmic {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+    .experience-card-cosmic {
+        padding: 1.5rem 1.2rem;
+        border-radius: 1.5rem;
+        border-left-width: 3px !important;
+    }
+
+    .timeline-path-cosmic,
+    .orbital-node {
+        display: none;
+    }
+}

@@ -1,0 +1,291 @@
+.contact-section {
+    position: relative;
+    padding: 8rem 0;
+    background: var(--bg-section);
+    overflow: hidden;
+}
+
+/* Signal Ripple Background */
+.signal-ripple-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.ripple-circle {
+    position: absolute;
+    border: 1px solid var(--accent-1);
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+}
+
+/* Prismatic Glass Form */
+.contact-prism-v2 {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 0;
+    background: var(--surface-1);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(40px);
+    border-radius: 3rem;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    box-shadow: var(--card-shadow);
+}
+
+.prism-edge-diffraction {
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg,
+            rgba(255, 0, 0, 0.1),
+            rgba(255, 255, 0, 0.1),
+            rgba(0, 255, 255, 0.1),
+            rgba(0, 0, 255, 0.1));
+    z-index: -1;
+    filter: blur(5px);
+    opacity: 0.2;
+}
+
+/* Info Hub */
+.contact-info-quantum {
+    padding: 3.5rem;
+    background: linear-gradient(135deg, var(--accent-glow), transparent);
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    border-right: 1px solid var(--glass-border);
+}
+
+.signal-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    background: rgba(34, 211, 238, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent-1);
+    margin-bottom: 2rem;
+}
+
+.quantum-method-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--glass);
+    border-radius: 1.5rem;
+    border: 1px solid var(--glass-border);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quantum-method-card:hover {
+    background: var(--surface-2);
+    border-color: var(--card-color);
+    transform: scale(1.01) translateX(5px);
+}
+
+.contact-toggle-btn {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    flex-shrink: 0;
+}
+
+.contact-toggle-btn:hover {
+    background: var(--surface-1);
+    border-color: var(--card-color);
+    box-shadow: 0 0 15px var(--card-color);
+}
+
+.is-encrypted {
+    opacity: 0.8;
+}
+
+.entangled-socials {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: auto;
+}
+
+.social-portal-unique {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    color: var(--text-primary);
+    position: relative;
+    transition: all 0.4s;
+}
+
+.social-portal-unique:hover {
+    background: var(--accent-1);
+    box-shadow: 0 0 20px var(--accent-1);
+    border-color: transparent;
+}
+
+/* Form Side */
+.contact-form-quantum {
+    padding: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.quantum-input-container {
+    position: relative;
+}
+
+.quantum-input {
+    width: 100%;
+    padding: 1.5rem;
+    background: var(--void-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.25rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.4s;
+}
+
+.quantum-input:focus {
+    outline: none;
+    border-color: var(--accent-1);
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.1);
+}
+
+.data-pulse-border {
+    position: absolute;
+    bottom: 0;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 2px;
+    background: var(--accent-1);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+}
+
+.quantum-input:focus~.data-pulse-border {
+    transform: scaleX(1);
+}
+
+.label-quantum {
+    position: absolute;
+    left: 1.5rem;
+    top: 1.5rem;
+    color: var(--text-muted);
+    pointer-events: none;
+    transition: all 0.3s;
+}
+
+.quantum-input:focus~.label-quantum,
+.quantum-input:not(:placeholder-shown)~.label-quantum {
+    top: -0.75rem;
+    left: 1rem;
+    font-size: 0.7rem;
+    color: var(--accent-1);
+    background: var(--bg-primary);
+
+    [data-theme='dark'] & {
+        background: var(--bg-section);
+    }
+
+    padding: 0 0.5rem;
+}
+
+/* Submit Button */
+.btn-emission {
+    padding: 1.5rem 3rem;
+    background: var(--accent-1);
+    color: var(--bg-primary);
+    border: none;
+    border-radius: 1.25rem;
+    font-weight: 800;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s;
+}
+
+.btn-emission:hover {
+    box-shadow: 0 0 30px var(--accent-1);
+    transform: scale(1.02);
+}
+
+/* Success Data Bloom */
+.data-bloom-overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, var(--accent-1) 0%, transparent 70%);
+    z-index: 100;
+    pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+    .contact-section {
+        padding: 4rem 0;
+    }
+
+    .contact-prism-v2 {
+        grid-template-columns: 1fr;
+        border-radius: 2rem;
+    }
+
+    .contact-info-quantum {
+        padding: 3rem 2rem;
+        border-right: none;
+        border-bottom: 1px solid var(--glass-border);
+    }
+
+    .contact-form-quantum {
+        padding: 3rem 2rem;
+    }
+
+    .entangled-socials {
+        justify-content: center;
+        margin-top: 3rem;
+    }
+
+    .contact-title-unique {
+        text-align: center;
+    }
+
+    .contact-info-quantum p {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .btn-emission {
+        width: 100%;
+        padding: 1.2rem;
+        font-size: 1rem;
+    }
+
+    .quantum-method-card {
+        padding: 1rem;
+        gap: 1rem;
+    }
+}

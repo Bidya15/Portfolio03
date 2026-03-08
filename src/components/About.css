@@ -1,0 +1,451 @@
+.about-section {
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 0;
+    background: var(--bg-section);
+}
+
+/* Binary Stream Background */
+.binary-stream-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    display: flex;
+    justify-content: space-around;
+    opacity: 0.45;
+    /* Increased for better visibility in dark mode */
+
+    [data-theme='light'] & {
+        opacity: 0.35;
+        /* Increased for better visibility in light mode */
+        color: var(--accent-1);
+    }
+}
+
+.binary-column {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent-1);
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    white-space: nowrap;
+}
+
+/* Memory Dump Address */
+.memory-addr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent-1);
+    opacity: 0.4;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Neural Node Profile Redesign */
+.visual-core-singularity {
+    position: relative;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.neural-void-glow {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 60%);
+    opacity: 0.15;
+    filter: blur(40px);
+    pointer-events: none;
+}
+
+.neural-frame {
+    position: relative;
+    width: 100% !important;
+    height: 100% !important;
+    border: 1px solid var(--accent-1);
+    border-radius: 2rem;
+    overflow: hidden;
+    background: var(--surface-1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px var(--accent-glow);
+}
+
+.scanning-bar-v2 {
+    position: absolute;
+    top: -10%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-1);
+    box-shadow: 0 0 15px var(--accent-1);
+    z-index: 10;
+    opacity: 0.6;
+    animation: scanPulseV2 4s ease-in-out infinite;
+}
+
+@keyframes scanPulseV2 {
+
+    0%,
+    100% {
+        top: -10%;
+        opacity: 0;
+    }
+
+    5%,
+    95% {
+        opacity: 0.6;
+    }
+
+    50% {
+        top: 110%;
+    }
+}
+
+.frame-border-glitch {
+    position: absolute;
+    inset: 0;
+    border: 2px solid transparent;
+    border-top-color: var(--accent-1);
+    border-bottom-color: var(--accent-3);
+    opacity: 0.2;
+    animation: frameGlitch 2s linear infinite;
+}
+
+@keyframes frameGlitch {
+    0% {
+        transform: scale(1);
+    }
+
+    5% {
+        transform: scale(1.02);
+        opacity: 0.5;
+    }
+
+    10% {
+        transform: scale(1);
+        opacity: 0.2;
+    }
+}
+
+.profile-hologram-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.5) contrast(1.1);
+    transition: all 0.5s;
+}
+
+.neural-frame:hover .profile-hologram-image {
+    filter: grayscale(0) contrast(1.2);
+    scale: 1.05;
+}
+
+/* Orbital & Tag Elements */
+.status-tag-orbital {
+    position: absolute;
+    padding: 0.3rem 0.6rem;
+    background: var(--surface-2);
+    border: 1px solid var(--accent-1);
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem;
+    color: var(--accent-1);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 100;
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.singularity-orbit {
+    position: absolute;
+    width: 140%;
+    height: 140%;
+    border: 1px dashed var(--accent-glow);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: rotateAboutSingularity 15s linear infinite;
+
+    [data-theme='light'] & {
+        border-color: rgba(99, 102, 241, 0.4);
+        border-width: 1.5px;
+    }
+}
+
+@keyframes rotateAboutSingularity {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.orbit-planet {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: var(--accent-1);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--accent-1);
+    transform: translate(-50%, -50%);
+
+    [data-theme='light'] & {
+        box-shadow: 0 0 10px var(--accent-1);
+    }
+}
+
+.holographic-interference {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(34, 211, 238, 0.05) 3px,
+            transparent 4px);
+    pointer-events: none;
+    z-index: 6;
+}
+
+/* Logic Connectors */
+.logic-connector-svg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.logic-trace {
+    fill: none;
+    stroke: var(--accent-1);
+    stroke-width: 1;
+    stroke-dasharray: 5, 5;
+    opacity: 0.2;
+}
+
+.gate-symbol {
+    fill: var(--bg-primary);
+    stroke: var(--accent-1);
+    stroke-width: 1;
+}
+
+/* Quantum Flux Visuals */
+.flux-ring-container {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flux-ring-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.ring-track {
+    fill: none;
+    stroke: var(--glass-border);
+    stroke-opacity: 0.3;
+}
+
+.ring-gauge {
+    fill: none;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 8px currentColor);
+}
+
+.flux-core {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px currentColor;
+    animation: corePulse 2s ease-in-out infinite;
+}
+
+@keyframes corePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+}
+
+.data-leak-field {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.leak-bit {
+    position: absolute;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 1000;
+    pointer-events: none;
+    opacity: 0.8;
+    text-shadow: 0 0 5px currentColor;
+}
+
+.stat-number-vivid {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 1000;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Big-O Badges */
+.complexity-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: var(--glass);
+    border: 1px solid var(--accent-1);
+    opacity: 0.8;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent-1);
+    margin-left: 1rem;
+}
+
+/* Character Fission Animation */
+.char-fission {
+    display: inline-block;
+    position: relative;
+}
+
+.char-fission::after {
+    content: attr(data-char);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: all 0.3s;
+}
+
+.char-fission:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+    color: var(--accent-1);
+}
+
+/* Code-Term Card */
+.code-term-card {
+    background: var(--surface-1);
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    padding: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    position: relative;
+    overflow: hidden;
+}
+
+.code-term-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-1);
+    box-shadow: 0 0 10px var(--accent-1);
+}
+
+.code-line {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+}
+
+.code-line .at {
+    color: var(--accent-1);
+}
+
+.code-line .fn {
+    color: var(--accent-3);
+}
+
+@media (max-width: 992px) {
+
+    .logic-connector-svg {
+        display: none;
+    }
+
+    .binary-stream-container {
+        opacity: 0.2;
+    }
+
+    .binary-column {
+        font-size: 0.6rem;
+        letter-spacing: 0.3rem;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .about-content {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .about-text {
+        text-align: left;
+    }
+
+    .about-stats {
+        grid-template-columns: 1fr;
+        margin-top: 6rem !important;
+    }
+
+    .stat-card-biolume {
+        padding: 2rem;
+    }
+
+    .stat-number-vivid {
+        font-size: 1.5rem;
+    }
+
+    .binary-stream-container {
+        opacity: 0.3;
+        /* Proportional increase for mobile visibility */
+    }
+}
+
+@media (max-width: 640px) {
+    .about-section {
+        padding: 4rem 0;
+    }
+
+    .visual-core-singularity {
+        aspect-ratio: 1;
+    }
+}

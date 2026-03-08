@@ -1,0 +1,282 @@
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: var(--bg-section);
+    overflow: hidden;
+    padding-top: 100px;
+}
+
+/* Quantum Singularity Background */
+.quantum-singularity-container {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    width: 500px;
+    height: 500px;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.singularity-core {
+    position: absolute;
+    inset: 0;
+    background: conic-gradient(from 0deg,
+            transparent,
+            var(--accent-1) 0.1turn,
+            transparent 0.2turn);
+    border-radius: 50%;
+    animation: rotateSingularity 10s linear infinite;
+    mix-blend-mode: var(--blend-mode);
+    filter: blur(2px);
+}
+
+.singularity-void {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--void-bg);
+    border-radius: 50%;
+    box-shadow: 0 0 60px 20px var(--accent-1);
+    z-index: 2;
+}
+
+@keyframes rotateSingularity {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Kinetic Typography */
+.hero-title-vortex {
+    font-size: clamp(1.8rem, 8vw, 4rem);
+    font-weight: 950;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+.text-prismatic {
+    background: var(--accent-gradient-prismatic);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: prismaticShift 8s linear infinite;
+}
+
+@keyframes prismaticShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+/* Motion Trail Swarm */
+.stellar-trail-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.stellar-particle-v2 {
+    position: absolute;
+    background: var(--particle-color);
+    border-radius: 50%;
+    filter: blur(0.5px);
+}
+
+.particle-trail {
+    position: absolute;
+    background: linear-gradient(to right, var(--accent-1), transparent);
+    height: 1px;
+    transform-origin: left center;
+    opacity: 0.3;
+}
+
+/* Neural Tether Array */
+.neural-tether-svg {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.tether-path {
+    fill: none;
+    stroke: var(--accent-1);
+    stroke-width: 1;
+    opacity: 0.15;
+    stroke-dasharray: 4 4;
+    animation: tetherFlow 2s linear infinite;
+}
+
+@keyframes tetherFlow {
+    from {
+        stroke-dashoffset: 8;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.strategic-hud-array {
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    z-index: 20;
+}
+
+.tether-node-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.tether-icon-box {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: var(--surface-1);
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    backdrop-filter: blur(20px);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: microJitter 3s ease-in-out infinite;
+}
+
+@keyframes microJitter {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(1px, -1px);
+    }
+
+    50% {
+        transform: translate(-1px, 1px);
+    }
+
+    75% {
+        transform: translate(1px, 1px);
+    }
+}
+
+.tether-icon-box:hover {
+    background: var(--accent-1);
+    border-color: transparent;
+    box-shadow: 0 0 40px var(--accent-1);
+    color: var(--bg-section);
+    transform: scale(1.1) translateX(-10px);
+}
+
+.holographic-label {
+    position: absolute;
+    right: 4.5rem;
+    background: var(--surface-2);
+    border: 1px solid var(--accent-1);
+    padding: 0.4rem 1rem;
+    border-radius: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent-1);
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.4s;
+    pointer-events: none;
+}
+
+.tether-node-wrap:hover .holographic-label {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 1024px) {
+
+    .neural-tether-svg,
+    .strategic-hud-array {
+        display: none;
+    }
+}
+
+/* Subtitle & Description */
+.hero-subtitle-quantum {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1.25rem;
+    background: var(--surface-2);
+    border: 1px solid var(--accent-1);
+    border-radius: 1rem;
+    color: var(--accent-1);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    margin-bottom: 1.5rem;
+}
+
+.hero-description-quantum {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    max-width: 32rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 1024px) {
+
+    .quantum-singularity-container,
+    .magnetic-orbit-wrap,
+    .neural-tether-svg,
+    .strategic-hud-array {
+        display: none;
+    }
+
+    .hero-title-vortex {
+        font-size: clamp(1.8rem, 10vw, 3rem);
+        text-align: center;
+        width: 100%;
+    }
+
+    .quantum-singularity-container {
+        display: block;
+        top: 25%;
+        left: 50%;
+        transform: translate(50%, -50%) scale(0.5);
+        opacity: 0.2;
+    }
+
+    .hero .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
