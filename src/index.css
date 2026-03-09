@@ -99,7 +99,7 @@ body {
 }
 
 .section-padding {
-  padding: 8rem 0;
+  padding: 6rem 0;
   content-visibility: auto;
   /* Optimizes off-screen rendering */
   contain-intrinsic-size: 0 500px;
@@ -118,7 +118,7 @@ body {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-glow);
-  border-radius: 2.5rem;
+  border-radius: 1.5rem;
   transition: var(--transition-smooth);
   will-change: transform, opacity;
   /* GPU optimization */
@@ -126,8 +126,8 @@ body {
 
 @media (max-width: 768px) {
   .glossy-card {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     will-change: auto;
     /* Save GPU on mobile */
   }
@@ -230,5 +230,35 @@ p {
 
   .section-padding {
     padding: 3rem 0;
+  }
+}
+
+@media (max-width: 360px) {
+  :root {
+    --section-gap: 2.5rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .section-padding {
+    padding: var(--section-gap) 0;
   }
 }

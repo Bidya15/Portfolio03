@@ -220,11 +220,11 @@
 
 .experience-card-cosmic {
     position: relative;
-    padding: 2rem;
+    padding: 1.5rem;
     background: var(--glass);
     backdrop-filter: blur(40px) saturate(180%);
     border: 1px solid var(--glass-border);
-    border-radius: 2.5rem;
+    border-radius: 1.5rem;
     overflow: hidden;
     box-shadow: var(--card-shadow);
     transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
@@ -269,7 +269,7 @@
 
 /* Internal 3D Stack */
 .exp-title-stellar {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 800;
     margin-bottom: 0.8rem;
     color: var(--text-primary);
@@ -365,7 +365,7 @@
 }
 
 .exp-footer-stellar {
-    margin-top: 2.5rem;
+    margin-top: 1.75rem;
     display: flex;
     justify-content: space-between;
     gap: 1.5rem;
@@ -391,7 +391,7 @@
     line-height: 1.8;
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 0.9rem;
 }
 
 .stellar-bullet {
@@ -462,8 +462,9 @@
     }
 
     .experience-item-cosmic {
-        width: 100% !important;
-        margin-left: 0 !important;
+        width: 80% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
     }
 
     .experience-card-cosmic {
@@ -475,5 +476,77 @@
     .timeline-path-cosmic,
     .orbital-node {
         display: none;
+    }
+}
+
+@media (max-width: 360px) {
+    .experience-section {
+        padding: 3rem 0;
+    }
+
+    .experience-card-cosmic {
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+
+    .exp-title-stellar {
+        font-size: 1.05rem;
+    }
+
+    .exp-company-stellar {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .exp-logo-container {
+        width: 3.2rem;
+        height: 3.2rem;
+        border-radius: 1rem;
+    }
+
+    .exp-desc-stellar {
+        font-size: 0.85rem;
+        gap: 0.8rem;
+    }
+
+    .stellar-bullet {
+        padding-left: 1.5rem;
+    }
+
+    .exp-planet-badge {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.55rem;
+        margin-bottom: 1rem;
+    }
+
+    .exp-footer-stellar {
+        margin-top: 1.5rem;
+        font-size: 0.75rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 300px) {
+    .experience-card-cosmic {
+        padding: 0.8rem 0.6rem;
+        border-radius: 0.8rem;
+    }
+
+    .exp-title-stellar {
+        font-size: 0.90rem;
+    }
+
+    .exp-logo-container {
+        display: none;
+    }
+
+    .exp-desc-stellar {
+        font-size: 0.7rem;
+        gap: 0.4rem;
+    }
+
+    .stellar-bullet {
+        padding-left: 1.25rem;
     }
 }

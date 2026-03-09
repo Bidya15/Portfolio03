@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useSpring, useMotionValue } from 'framer-motion';
 
-const CustomCursor = () => {
+const CustomCursor = ({ isMobile }) => {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
     const [isHovering, setIsHovering] = useState(false);
@@ -11,6 +11,8 @@ const CustomCursor = () => {
     const cursorY = useSpring(mouseY, springConfig);
 
     useEffect(() => {
+        if (isMobile) return;
+
         const moveMouse = (e) => {
             mouseX.set(e.clientX);
             mouseY.set(e.clientY);
@@ -28,7 +30,9 @@ const CustomCursor = () => {
             window.removeEventListener('mousemove', moveMouse);
             window.removeEventListener('mouseover', handleHover);
         };
-    }, []);
+    }, [isMobile]);
+
+    if (isMobile) return null;
 
     return (
         <>

@@ -28,7 +28,12 @@ const StellarParticleV2 = ({ index }) => {
                     scale: [1, 1.5, 1]
                 }}
                 transition={{ duration, repeat: Infinity, ease: "linear" }}
-                style={{ width: size, height: size, background: index % 3 === 0 ? 'var(--accent-1)' : 'var(--particle-color)' }}
+                style={{
+                    width: size,
+                    height: size,
+                    background: index % 3 === 0 ? 'var(--accent-1)' : 'var(--particle-color)',
+                    willChange: 'transform'
+                }}
             />
         </div>
     );
@@ -79,7 +84,7 @@ const NeuralTether = ({ start, end, mouseX, mouseY }) => {
     );
 };
 
-const Hero = () => {
+const Hero = ({ isMobile }) => {
     const containerRef = useRef(null);
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
@@ -155,7 +160,7 @@ const Hero = () => {
             </div>
 
             <svg className="neural-tether-svg">
-                {nodePositions.map((nodePos, i) => (
+                {!isMobile && nodePositions.map((nodePos, i) => (
                     <NeuralTether
                         key={i}
                         start={singularityPos}
@@ -167,7 +172,7 @@ const Hero = () => {
             </svg>
 
             <div className="stellar-swarm">
-                {[...Array(15)].map((_, i) => (
+                {[...Array(isMobile ? 6 : 15)].map((_, i) => (
                     <StellarParticleV2 key={i} index={i} />
                 ))}
             </div>

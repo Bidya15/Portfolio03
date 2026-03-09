@@ -38,22 +38,30 @@ function App() {
     };
   }, [theme]);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
   return (
     <div className="app">
-      <CustomCursor />
-      <AnimatedBackground />
+      <CustomCursor isMobile={isMobile} />
+      <AnimatedBackground isMobile={isMobile} />
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <main>
-        <Hero />
-        <About />
+        <Hero isMobile={isMobile} />
+        <About isMobile={isMobile} />
         <Experience />
         <Projects />
         <Skills />
-        <Achievements />
+        <Achievements isMobile={isMobile} />
         <Contact />
       </main>
       <Footer />

@@ -76,6 +76,7 @@
     stroke-dasharray: 5, 15;
     opacity: 1;
     transform-origin: center;
+    will-change: transform;
 
     [data-theme='light'] & {
         stroke-width: 1.5;
@@ -135,11 +136,11 @@
 
 .achievement-card-cosmic {
     position: relative;
-    padding: 2rem;
+    padding: 1.4rem;
     background: var(--glass);
     backdrop-filter: blur(30px);
     border: 1px solid var(--glass-border);
-    border-radius: 2rem;
+    border-radius: 1.5rem;
     overflow: hidden;
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -245,6 +246,8 @@
         height: auto;
         gap: 3rem;
         margin-top: 5rem;
+        width: 80%;
+        margin: 0 auto;
     }
 
     .planet-milestone {
@@ -255,7 +258,8 @@
     }
 
     .orbital-paths-svg,
-    .gravity-core-container {
+    .gravity-core-container,
+    .meteor-container {
         display: none;
     }
 
@@ -271,5 +275,52 @@
 
     .planet-title {
         font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .achievements-section {
+        padding: 3rem 0;
+    }
+
+    .achievement-card-cosmic {
+        padding: 1.5rem;
+        border-radius: 1.25rem;
+    }
+
+    .planet-title {
+        font-size: 1rem;
+    }
+
+    .planet-desc {
+        font-size: 0.8rem;
+    }
+
+    .cosmic-badge {
+        padding: 0.3rem 0.75rem;
+        font-size: 0.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .planet-year {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 300px) {
+    .achievement-card-cosmic {
+        padding: 1.25rem;
+    }
+
+    .planet-title {
+        font-size: 0.9rem;
+    }
+
+    .planet-desc {
+        display: none;
+    }
+
+    .cosmic-badge {
+        font-size: 0.55rem;
     }
 }

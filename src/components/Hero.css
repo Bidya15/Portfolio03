@@ -30,6 +30,7 @@
     animation: rotateSingularity 10s linear infinite;
     mix-blend-mode: var(--blend-mode);
     filter: blur(2px);
+    will-change: transform;
 }
 
 .singularity-void {
@@ -62,6 +63,7 @@
     margin-bottom: 1.5rem;
     position: relative;
     z-index: 10;
+    will-change: transform, opacity;
 }
 
 .text-prismatic {
@@ -278,5 +280,33 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .hero-content {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-title-vortex {
+        font-size: 1.8rem !important;
+        margin-bottom: 1rem;
+    }
+
+    .hero-subtitle-quantum {
+        font-size: 0.6rem;
+        padding: 0.4rem 0.8rem;
+        letter-spacing: 0.15em;
+        gap: 0.5rem;
+    }
+
+    .hero-description-quantum {
+        font-size: 0.85rem;
+    }
+
+    .quantum-singularity-container {
+        transform: translate(50%, -50%) scale(0.35);
+        opacity: 0.15;
     }
 }

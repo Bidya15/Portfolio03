@@ -138,7 +138,7 @@ const StatusTag = ({ text, angle, delay, radius }) => (
     </motion.div>
 );
 
-const About = () => {
+const About = ({ isMobile }) => {
     const sectionRef = useRef(null);
     const [hue, setHue] = useState(200);
 
@@ -168,7 +168,7 @@ const About = () => {
         >
             {/* Binary Stream Background */}
             <div className="binary-stream-container">
-                {[...Array(12)].map((_, i) => <BinaryColumn key={i} index={i} />)}
+                {[...Array(isMobile ? 4 : 12)].map((_, i) => <BinaryColumn key={i} index={i} />)}
             </div>
 
             {/* Logic Connectors SVG */}

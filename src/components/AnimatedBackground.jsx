@@ -1,17 +1,22 @@
 import React, { useMemo } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-const AnimatedBackground = () => {
+const AnimatedBackground = ({ isMobile }) => {
     const { scrollYProgress } = useScroll();
     const y1 = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
     const y2 = useTransform(scrollYProgress, [0, 1], ['0%', '-30%']);
     const rotate = useTransform(scrollYProgress, [0, 1], [0, 360]);
 
-    const orbs = useMemo(() => [
-        { size: '40vw', color: 'var(--accent-1)', top: '-10%', left: '-10%', y: y1 },
-        { size: '35vw', color: 'var(--accent-2)', bottom: '10%', right: '-5%', y: y2 },
-        { size: '25vw', color: 'var(--accent-3)', top: '40%', right: '15%', y: y1 },
-    ], [y1, y2]);
+    const orbs = useMemo(() => {
+        if (isMobile) {
+            return [{ size: '60vw', color: 'var(--accent-1)', top: '10%', left: '-20%', y: y1 }];
+        }
+        return [
+            { size: '40vw', color: 'var(--accent-1)', top: '-10%', left: '-10%', y: y1 },
+            { size: '35vw', color: 'var(--accent-2)', bottom: '10%', right: '-5%', y: y2 },
+            { size: '25vw', color: 'var(--accent-3)', top: '40%', right: '15%', y: y1 },
+        ];
+    }, [isMobile, y1, y2]);
 
     return (
         <div className="bg-mesh" style={{ pointerEvents: 'none', position: 'fixed' }}>
@@ -30,6 +35,7 @@ const AnimatedBackground = () => {
                         y: orb.y,
                         rotate: rotate,
                         opacity: 0.15,
+                        willChange: 'transform'
                     }}
                     animate={{
                         scale: [1, 1.1, 1],
